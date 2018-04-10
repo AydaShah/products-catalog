@@ -2,11 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:background="@android:color/darker_gray">
 
     <GridView
         android:id="@+id/productsGridView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:numColumns="2"></GridView>
+        android:numColumns="2"
+        android:horizontalSpacing="@dimen/products_item_outer_margin"
+        android:verticalSpacing="@dimen/products_item_outer_margin"></GridView>
 </RelativeLayout>
