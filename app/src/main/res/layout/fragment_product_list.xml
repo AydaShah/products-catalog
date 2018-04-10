@@ -4,11 +4,10 @@
     android:layout_height="match_parent"
     android:background="@android:color/darker_gray">
 
-    <GridView
-        android:id="@+id/productsGridView"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/productsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:numColumns="2"
-        android:horizontalSpacing="@dimen/products_item_outer_margin"
-        android:verticalSpacing="@dimen/products_item_outer_margin"></GridView>
+        android:scrollbars="vertical"
+        ></android.support.v7.widget.RecyclerView>
 </RelativeLayout>

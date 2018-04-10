@@ -1,10 +1,11 @@
 package com.aydashah.productscatalog.app.fragments;
 
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
 
 import com.aydashah.productscatalog.R;
 
@@ -14,7 +15,7 @@ import com.aydashah.productscatalog.R;
 
 public class ProductListFragment extends BaseFragment {
 
-    private GridView productsGridView;
+    private RecyclerView productsRecyclerView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -26,6 +27,10 @@ public class ProductListFragment extends BaseFragment {
     }
 
     private void initView(View view) {
-        productsGridView = (GridView) view.findViewById(R.id.productsGridView);
+        productsRecyclerView = (RecyclerView) view.findViewById(R.id.productsRecyclerView);
+
+        productsRecyclerView.setHasFixedSize(true);
+        RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(),2);
+        productsRecyclerView.setLayoutManager(layoutManager);
     }
 }
