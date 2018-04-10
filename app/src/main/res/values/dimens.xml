@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    //products list
+    <dimen name="products_item_inner_padding">15dp</dimen>
+    <dimen name="products_list_properties_text_size">16dp</dimen>
+    <dimen name="products_list_name_text_size">15dp</dimen>
+    <dimen name="products_item_properties_margin">10dp</dimen>
+    <dimen name="products_item_image_height">80dp</dimen>
+</resources>
