@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">کاتالوگ</string>
+
+    //network
+    <string name="error_in_connection">در برقراری ارتباط با سرور مشکلی به وجود آمده است. لطفا دوباره تلاش کنید</string>
+
 </resources>
