@@ -38,6 +38,7 @@ public class ProductsListAdapter extends RecyclerView.Adapter implements ApiCall
     private boolean mIsLoading = false;
     private boolean mWholeListLoaded;
     private ArrayList<ProductModel> mData = new ArrayList<>();
+    private Call<ProductsListResponse> call;
 
 
     public ProductsListAdapter(AdapterListener adapterListener, String category) {
@@ -49,9 +50,21 @@ public class ProductsListAdapter extends RecyclerView.Adapter implements ApiCall
     public void load() {
         mIsLoading = true;
         ProductsApi api = ApiClient.getInstance().getEndpointApi(ProductsApi.class);
-        Call<ProductsListResponse> call = api.getProductsListFromServer(mCategory, mPagination, mMaxItemPerPage);
+        call = api.getProductsListFromServer(mCategory, mPagination, mMaxItemPerPage);
         ApiClient.request(call, this);
         mAdapterListener.onStartLoadingList();
+    }
+
+    public void cancelLoadData() {
+        if (call != null) {
+            call.cancel();
+        }
+    }
+
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_product, parent, false);
+        return new ViewHolder(v);
     }
 
     public void reload() {
@@ -60,10 +73,12 @@ public class ProductsListAdapter extends RecyclerView.Adapter implements ApiCall
         load();
     }
 
-    @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_product, parent, false);
-        return new ViewHolder(v);
+    public boolean isLoading() {
+        return mIsLoading;
+    }
+
+    public boolean isWholeListLoaded() {
+        return mWholeListLoaded;
     }
 
     @Override
@@ -94,7 +109,7 @@ public class ProductsListAdapter extends RecyclerView.Adapter implements ApiCall
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mData.size();
     }
 
     @Override
