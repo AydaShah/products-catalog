@@ -2,6 +2,8 @@ package com.aydashah.productscatalog.app.fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,28 +11,23 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.aydashah.productscatalog.R;
-import com.aydashah.productscatalog.model.response.ErrorResponse;
-import com.aydashah.productscatalog.model.response.ProductDetailResponse;
-import com.aydashah.productscatalog.network.api.ApiCallback;
-import com.synnapps.carouselview.CarouselView;
+import com.aydashah.productscatalog.adapter.ProductDetailListAdapter;
+import com.aydashah.productscatalog.listener.AdapterListener;
 
 import retrofit2.Call;
-import retrofit2.Response;
 
 /**
  * Created by AydaShah on 4/12/18.
  */
 
-public class ProductDetailFragment extends BaseFragment implements View.OnClickListener,ApiCallback<ProductDetailResponse> {
+public class ProductDetailFragment extends BaseFragment implements View.OnClickListener, AdapterListener {
 
     private TextView mEmptyView;
     private TextView mErrorMessageTextView;
-    private TextView mProductBrandTextView;
-    private TextView mProductNameTextView;
-    private TextView mProductPriceTextView;
-    private CarouselView mProductImagesCarouselView;
     private LinearLayout mNetworkProblemView;
+    private RecyclerView mProductDetailRecyclerView;
 
+    private ProductDetailListAdapter mAdapter;
     private String mSku;
     private String TAG = "ProductDetailFragment";
 
@@ -55,28 +52,32 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        loadData();
+        mAdapter = new ProductDetailListAdapter(this, mSku);
+        mProductDetailRecyclerView.setAdapter(mAdapter);
+        mAdapter.load();
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        //TODO cancel request
+        mAdapter.cancelLoadData();
     }
 
     protected void loadData() {
+        mAdapter.load();
     }
 
     private void initView(View view) {
-        mNetworkProblemView = view.findViewById(R.id.networkProblemView);
-        mEmptyView = view.findViewById(R.id.emptyView);
-        mErrorMessageTextView = view.findViewById(R.id.errorMessageTextView);
-        mProductBrandTextView = view.findViewById(R.id.productBrandTextView);
-        mProductNameTextView = view.findViewById(R.id.productNameTextView);
-        mProductPriceTextView = view.findViewById(R.id.productPriceTextView);
-        mProductImagesCarouselView = view.findViewById(R.id.productImagesCarouselView);
+//        mNetworkProblemView = view.findViewById(R.id.networkProblemView);
+//        mEmptyView = view.findViewById(R.id.emptyView);
+//        mErrorMessageTextView = view.findViewById(R.id.errorMessageTextView);
+        mProductDetailRecyclerView = view.findViewById(R.id.productDetailRecyclerView);
 
-        view.findViewById(R.id.retryButton).setOnClickListener(this);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        mProductDetailRecyclerView.setLayoutManager(linearLayoutManager);
+
+//        view.findViewById(R.id.retryButton).setOnClickListener(this);
 
     }
 
@@ -89,13 +90,44 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
         }
     }
 
-    @Override
-    public void onResponse(Call<ProductDetailResponse> call, Response<ProductDetailResponse> response, ErrorResponse errorResponse) {
 
+    protected void reloadData() {
+        mAdapter.reload();
     }
 
     @Override
-    public void onFailure(Call<ProductDetailResponse> call, Throwable t) {
+    public void onStartLoadingList() {
+//        mSwipeRefreshLayout.setRefreshing(true);
+//        mNetworkProblemView.setVisibility(View.GONE);
+//        mEmptyView.setVisibility(View.GONE);
+    }
 
+    @Override
+    public void onEmptyResponse(Object response) {
+//        mEmptyView.setVisibility(View.VISIBLE);
+//        mProductsRecyclerView.setVisibility(View.GONE);
+//        mNetworkProblemView.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onNoneEmptyResponse(Object response) {
+//        mSwipeRefreshLayout.setRefreshing(false);
+//        mProductsRecyclerView.setVisibility(View.VISIBLE);
+//        mNetworkProblemView.setVisibility(View.GONE);
+//        mEmptyView.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onError(Call call, Throwable throwable) {
+//        if (call.isCanceled()) {
+//            Log.d(TAG, "onError: request was cancelled");
+//        } else {
+//            Log.d(TAG, "onError: " + throwable.getMessage());
+//            mErrorMessageTextView.setText(throwable.getMessage());
+//            mSwipeRefreshLayout.setRefreshing(false);
+//            mProductsRecyclerView.setVisibility(View.GONE);
+//            mNetworkProblemView.setVisibility(View.VISIBLE);
+//            mEmptyView.setVisibility(View.GONE);
+//        }
     }
 }

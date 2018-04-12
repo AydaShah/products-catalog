@@ -17,8 +17,11 @@
 
     //product detail
     <dimen name="product_detail_outer_margin">10dp</dimen>
-    <dimen name="product_detail_brand_text_size">16dp</dimen>
-    <dimen name="product_detail_name_text_size">18dp</dimen>
-    <dimen name="product_detail_price_text_size">20dp</dimen>
+    <dimen name="product_detail_inner_padding">15dp</dimen>
+    <dimen name="product_detail_brand_text_size">18dp</dimen>
+    <dimen name="product_detail_name_text_size">20dp</dimen>
+    <dimen name="product_detail_price_text_size">22dp</dimen>
     <dimen name="product_detail_fields_space">20dp</dimen>
+    <dimen name="product_detail_specification_margin">3dp</dimen>
+    <dimen name="product_detail_specification_text_size">13dp</dimen>
 </resources>

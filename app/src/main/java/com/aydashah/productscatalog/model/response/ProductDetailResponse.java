@@ -8,13 +8,13 @@ import com.aydashah.productscatalog.model.ProductDetailMetadata;
 
 public class ProductDetailResponse extends BaseResponse{
 
-    private ProductDetailMetadata productDetailMetadata;
+    private ProductDetailMetadata metadata;
 
-    public ProductDetailMetadata getProductDetailMetadata() {
-        return productDetailMetadata;
+    public ProductDetailMetadata getMetadata() {
+        return metadata;
     }
 
-    public void setProductDetailMetadata(ProductDetailMetadata productDetailMetadata) {
-        this.productDetailMetadata = productDetailMetadata;
+    public void setMetadata(ProductDetailMetadata metadata) {
+        this.metadata = metadata;
     }
 }

@@ -4,7 +4,7 @@ package com.aydashah.productscatalog.model;
  * Created by AydaShah on 4/12/18.
  */
 
-class ImageModel {
+public class ImageModel {
 
     private String url;
     private String zoom;

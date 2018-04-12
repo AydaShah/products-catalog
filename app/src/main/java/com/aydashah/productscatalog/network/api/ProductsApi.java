@@ -1,5 +1,6 @@
 package com.aydashah.productscatalog.network.api;
 
+import com.aydashah.productscatalog.model.response.ProductDetailResponse;
 import com.aydashah.productscatalog.model.response.ProductsListResponse;
 
 import retrofit2.Call;
@@ -16,4 +17,7 @@ public interface ProductsApi {
     Call<ProductsListResponse> getProductsListFromServer(@Path("CATEGORY") String category,
                                                          @Path("PAGE_NUMBER") int pageNumber,
                                                          @Path("MAXIMUM_ITEMS_PER_PAGE") int maxItemsPerPage);
+
+    @GET("catalog/detail/sku/{SKU_NUMBER}")
+    Call<ProductDetailResponse> getProductDetailFromServer(@Path("SKU_NUMBER") String skuNumber);
 }

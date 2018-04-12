@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.aydashah.productscatalog.R;
 import com.aydashah.productscatalog.app.CatalogIntent;
 import com.aydashah.productscatalog.app.ProductsCatalogApp;
+import com.aydashah.productscatalog.app.activities.MainActivity;
 import com.aydashah.productscatalog.listener.AdapterListener;
 import com.aydashah.productscatalog.model.ErrorMessages;
 import com.aydashah.productscatalog.model.ErrorModel;
@@ -99,7 +100,7 @@ public class ProductsListAdapter extends RecyclerView.Adapter implements ApiCall
         }
         viewHolder.productPriceTextView.setText(PersianNumberConverter.convertToPersianFromString(
                 PersianNumberConverter.separateBy3(item.getPrice()))
-                + context.getString(R.string.rial));
+                +" "+ context.getString(R.string.rial));
         try {
             Picasso.with(context)
                     .load(item.getImage())
@@ -113,7 +114,7 @@ public class ProductsListAdapter extends RecyclerView.Adapter implements ApiCall
         viewHolder.itemHolderRelativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                context.startActivity(CatalogIntent.createProductsDetailIntent(item.getSku()));
+                ((MainActivity)context).startActivity(CatalogIntent.createProductsDetailIntent(item.getSku()));
             }
         });
     }

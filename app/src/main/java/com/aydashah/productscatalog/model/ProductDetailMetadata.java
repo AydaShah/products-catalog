@@ -15,7 +15,7 @@ public class ProductDetailMetadata {
     @SerializedName("category_entity")
     private CategoryEntityModel categoryEntity;
     @SerializedName("brand_entity")
-    private BrandEntityModel brand_entity;
+    private BrandEntityModel brandEntity;
     @SerializedName("share_url")
     private String shareUrl;
     @SerializedName("rating_reviews_summary")
@@ -28,6 +28,7 @@ public class ProductDetailMetadata {
     private String categories;
     private String vertical;
     private boolean bundle;
+    private ArrayList<SpecificationsModel> specifications;
 
     public double getPriceConverted() {
         return priceConverted;
@@ -45,12 +46,12 @@ public class ProductDetailMetadata {
         this.categoryEntity = categoryEntity;
     }
 
-    public BrandEntityModel getBrand_entity() {
-        return brand_entity;
+    public BrandEntityModel getBrandEntity() {
+        return brandEntity;
     }
 
-    public void setBrand_entity(BrandEntityModel brand_entity) {
-        this.brand_entity = brand_entity;
+    public void setBrandEntity(BrandEntityModel brandEntity) {
+        this.brandEntity = brandEntity;
     }
 
     public String getShareUrl() {
@@ -123,5 +124,13 @@ public class ProductDetailMetadata {
 
     public void setBundle(boolean bundle) {
         this.bundle = bundle;
+    }
+
+    public ArrayList<SpecificationsModel> getSpecifications() {
+        return specifications;
+    }
+
+    public void setSpecifications(ArrayList<SpecificationsModel> specifications) {
+        this.specifications = specifications;
     }
 }

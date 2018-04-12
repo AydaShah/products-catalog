@@ -40,6 +40,16 @@
         <item name="android:ellipsize">end</item>
     </style>
 
+    <style name="ProductDetailSpecificationTextStyle" parent="android:Widget.TextView">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">right</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_marginTop">@dimen/product_detail_specification_margin</item>
+        <item name="android:textSize">@dimen/product_detail_specification_text_size</item>
+    </style>
+
     <style name="ProductListItemNameTextStyle" parent="ProductListItemPropertyTextStyle">
         <item name="android:textColor">@color/dim_gray</item>
         <item name="android:textSize">@dimen/products_list_name_text_size</item>

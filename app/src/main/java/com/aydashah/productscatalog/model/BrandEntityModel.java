@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by AydaShah on 4/12/18.
  */
 
-class BrandEntityModel {
+public class BrandEntityModel {
 
     @SerializedName("url_key")
     private String urlKey;
