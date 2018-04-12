@@ -22,7 +22,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/ProductBrandTextView"
+                    android:id="@+id/productBrandTextView"
                     style="@style/ProductListItemPropertyTextStyle"
                     android:textSize="@dimen/product_detail_brand_text_size" />
 
@@ -39,13 +39,13 @@
                     app:strokeWidth="1dp" />
 
                 <TextView
-                    android:id="@+id/ProductNameTextView"
+                    android:id="@+id/productNameTextView"
                     style="@style/ProductListItemNameTextStyle"
                     android:layout_marginTop="@dimen/product_detail_fields_space"
                     android:textSize="@dimen/product_detail_name_text_size" />
 
                 <TextView
-                    android:id="@+id/ProductPriceTextView"
+                    android:id="@+id/productPriceTextView"
                     style="@style/ProductListItemNameTextStyle"
                     android:layout_marginTop="@dimen/product_detail_fields_space"
                     android:textSize="@dimen/product_detail_price_text_size" />

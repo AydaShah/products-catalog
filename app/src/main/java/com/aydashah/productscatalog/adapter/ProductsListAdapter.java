@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.aydashah.productscatalog.R;
+import com.aydashah.productscatalog.app.CatalogIntent;
 import com.aydashah.productscatalog.app.ProductsCatalogApp;
 import com.aydashah.productscatalog.listener.AdapterListener;
 import com.aydashah.productscatalog.model.ErrorMessages;
@@ -108,6 +109,13 @@ public class ProductsListAdapter extends RecyclerView.Adapter implements ApiCall
         } catch (Exception e) {
             viewHolder.productImageView.setImageResource(R.drawable.ic_product);
         }
+
+        viewHolder.itemHolderRelativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context.startActivity(CatalogIntent.createProductsDetailIntent(item.getSku()));
+            }
+        });
     }
 
     @Override
@@ -137,7 +145,7 @@ public class ProductsListAdapter extends RecyclerView.Adapter implements ApiCall
 
             } else {
                 String errorBody = "";
-                ArrayList<ErrorModel> errorList = ((ErrorMessages)(response.body().getMessages())).getError();
+                ArrayList<ErrorModel> errorList = ((ErrorMessages) (response.body().getMessages())).getError();
                 for (int i = 0; i < errorList.size(); i++) {
                     errorBody += errorList.get(i).getMessage() + "\n";
                 }

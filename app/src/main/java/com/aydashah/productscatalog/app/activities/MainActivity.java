@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
 import com.aydashah.productscatalog.R;
+import com.aydashah.productscatalog.app.fragments.ProductDetailFragment;
 import com.aydashah.productscatalog.app.fragments.ProductListFragment;
 
 /**
@@ -40,6 +41,13 @@ public class MainActivity extends FragmentActivity {
                 switch (section) {
                     case "products_list":
                         fragment = new ProductListFragment();
+                        openFragment(fragment);
+                        break;
+                    case "products_detail":
+                        Bundle productDetailBundle = new Bundle();
+                        productDetailBundle.putString("SKU", intentData.getQueryParameter("sku"));
+                        fragment = new ProductDetailFragment();
+                        fragment.setArguments(productDetailBundle);
                         openFragment(fragment);
                         break;
                 }

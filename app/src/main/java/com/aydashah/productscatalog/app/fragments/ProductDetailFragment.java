@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.aydashah.productscatalog.R;
+import com.synnapps.carouselview.CarouselView;
 
 /**
  * Created by AydaShah on 4/12/18.
@@ -18,7 +19,13 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
 
     private TextView mEmptyView;
     private TextView mErrorMessageTextView;
+    private TextView mProductBrandTextView;
+    private TextView mProductNameTextView;
+    private TextView mProductPriceTextView;
+    private CarouselView mProductImagesCarouselView;
     private LinearLayout mNetworkProblemView;
+
+    private String mSku;
     private String TAG = "ProductDetailFragment";
 
     @Override
@@ -28,6 +35,15 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
         initView(view);
 
         return view;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mSku = getArguments().getString("SKU");
+        }
+
     }
 
     @Override
@@ -49,6 +65,10 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
         mNetworkProblemView = view.findViewById(R.id.networkProblemView);
         mEmptyView = view.findViewById(R.id.emptyView);
         mErrorMessageTextView = view.findViewById(R.id.errorMessageTextView);
+        mProductBrandTextView = view.findViewById(R.id.productBrandTextView);
+        mProductNameTextView = view.findViewById(R.id.productNameTextView);
+        mProductPriceTextView = view.findViewById(R.id.productPriceTextView);
+        mProductImagesCarouselView = view.findViewById(R.id.productImagesCarouselView);
 
         view.findViewById(R.id.retryButton).setOnClickListener(this);
 

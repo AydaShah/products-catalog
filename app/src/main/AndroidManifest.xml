@@ -27,6 +27,9 @@
                 <data
                     android:host="products_list"
                     android:scheme="catalog" />
+                <data
+                    android:host="products_detail"
+                    android:scheme="catalog" />
             </intent-filter>
         </activity>
     </application>
