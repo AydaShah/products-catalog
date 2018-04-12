@@ -13,24 +13,55 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="@dimen/product_detail_inner_padding">
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/ProductBrandTextView"
-                style="@style/ProductListItemPropertyTextStyle"
-                android:textSize="@dimen/product_detail_brand_text_size" />
-
-            <com.synnapps.carouselview.CarouselView
-                android:id="@+id/productImagesCarouselView"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                app:fillColor="#FFFFFFFF"
-                app:pageColor="#00000000"
-                app:radius="6dp"
-                app:slideInterval="3000"
-                app:strokeColor="#FF777777"
-                app:strokeWidth="1dp" />
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/product_detail_outer_margin"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/ProductBrandTextView"
+                    style="@style/ProductListItemPropertyTextStyle"
+                    android:textSize="@dimen/product_detail_brand_text_size" />
+
+                <com.synnapps.carouselview.CarouselView
+                    android:id="@+id/productImagesCarouselView"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="@dimen/product_detail_fields_space"
+                    app:fillColor="#FFFFFFFF"
+                    app:pageColor="#00000000"
+                    app:radius="6dp"
+                    app:slideInterval="3000"
+                    app:strokeColor="#FF777777"
+                    app:strokeWidth="1dp" />
+
+                <TextView
+                    android:id="@+id/ProductNameTextView"
+                    style="@style/ProductListItemNameTextStyle"
+                    android:layout_marginTop="@dimen/product_detail_fields_space"
+                    android:textSize="@dimen/product_detail_name_text_size" />
+
+                <TextView
+                    android:id="@+id/ProductPriceTextView"
+                    style="@style/ProductListItemNameTextStyle"
+                    android:layout_marginTop="@dimen/product_detail_fields_space"
+                    android:textSize="@dimen/product_detail_price_text_size" />
+
+            </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@android:color/black" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/darker_gray"
+                android:orientation="vertical"></LinearLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
