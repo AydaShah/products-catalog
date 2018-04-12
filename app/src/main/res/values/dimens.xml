@@ -14,4 +14,8 @@
     <dimen name="products_item_image_height">80dp</dimen>
     <dimen name="products_item_outer_margin">2dp</dimen>
     <dimen name="products_item_radius">3dp</dimen>
+
+    //product detail
+    <dimen name="product_detail_inner_padding">10dp</dimen>
+    <dimen name="product_detail_brand_text_size">16dp</dimen>
 </resources>
