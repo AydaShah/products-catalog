@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="@dimen/products_item_inner_padding">
+    android:padding="@dimen/products_item_inner_padding"
+    android:id="@+id/itemHolderRelativeLayout">
 
     <ImageView
         android:id="@+id/productImageView"

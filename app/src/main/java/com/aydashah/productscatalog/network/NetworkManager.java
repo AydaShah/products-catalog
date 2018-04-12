@@ -1,4 +1,4 @@
-package com.aydashah.productscatalog.app.network;
+package com.aydashah.productscatalog.network;
 
 /**
  * Created by AydaShah on 4/11/18.

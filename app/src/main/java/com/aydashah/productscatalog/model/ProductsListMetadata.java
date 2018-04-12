@@ -1,4 +1,6 @@
-package com.aydashah.productscatalog.app.model;
+package com.aydashah.productscatalog.model;
+
+import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
@@ -9,7 +11,8 @@ import java.util.ArrayList;
 public class ProductsListMetadata {
 
     private String sort;
-    private int total_products;
+    @SerializedName("total_products")
+    private int totalProducts;
     private String title;
     private String categories;
     private String vertical;
@@ -23,12 +26,12 @@ public class ProductsListMetadata {
         this.sort = sort;
     }
 
-    public int getTotal_products() {
-        return total_products;
+    public int getTotalProducts() {
+        return totalProducts;
     }
 
-    public void setTotal_products(int total_products) {
-        this.total_products = total_products;
+    public void setTotalProducts(int totalProducts) {
+        this.totalProducts = totalProducts;
     }
 
     public String getTitle() {

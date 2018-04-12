@@ -1,6 +1,6 @@
-package com.aydashah.productscatalog.app.model.response;
+package com.aydashah.productscatalog.model.response;
 
-import com.aydashah.productscatalog.app.model.Session;
+import com.aydashah.productscatalog.model.Session;
 
 /**
  * Created by AydaShah on 4/11/18.

@@ -1,4 +1,4 @@
-package com.aydashah.productscatalog.app.model;
+package com.aydashah.productscatalog.model;
 
 import java.util.ArrayList;
 

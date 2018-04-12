@@ -1,7 +1,7 @@
-package com.aydashah.productscatalog.app.network;
+package com.aydashah.productscatalog.network;
 
-import com.aydashah.productscatalog.app.model.response.ErrorResponse;
-import com.aydashah.productscatalog.app.network.api.ApiCallback;
+import com.aydashah.productscatalog.model.response.ErrorResponse;
+import com.aydashah.productscatalog.network.api.ApiCallback;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

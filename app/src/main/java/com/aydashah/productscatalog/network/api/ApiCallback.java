@@ -1,6 +1,6 @@
-package com.aydashah.productscatalog.app.network.api;
+package com.aydashah.productscatalog.network.api;
 
-import com.aydashah.productscatalog.app.model.response.ErrorResponse;
+import com.aydashah.productscatalog.model.response.ErrorResponse;
 
 import retrofit2.Call;
 import retrofit2.Response;
