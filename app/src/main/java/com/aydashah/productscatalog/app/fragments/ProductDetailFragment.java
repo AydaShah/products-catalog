@@ -9,13 +9,19 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.aydashah.productscatalog.R;
+import com.aydashah.productscatalog.model.response.ErrorResponse;
+import com.aydashah.productscatalog.model.response.ProductDetailResponse;
+import com.aydashah.productscatalog.network.api.ApiCallback;
 import com.synnapps.carouselview.CarouselView;
+
+import retrofit2.Call;
+import retrofit2.Response;
 
 /**
  * Created by AydaShah on 4/12/18.
  */
 
-public class ProductDetailFragment extends BaseFragment implements View.OnClickListener {
+public class ProductDetailFragment extends BaseFragment implements View.OnClickListener,ApiCallback<ProductDetailResponse> {
 
     private TextView mEmptyView;
     private TextView mErrorMessageTextView;
@@ -81,5 +87,15 @@ public class ProductDetailFragment extends BaseFragment implements View.OnClickL
                 loadData();
                 break;
         }
+    }
+
+    @Override
+    public void onResponse(Call<ProductDetailResponse> call, Response<ProductDetailResponse> response, ErrorResponse errorResponse) {
+
+    }
+
+    @Override
+    public void onFailure(Call<ProductDetailResponse> call, Throwable t) {
+
     }
 }
