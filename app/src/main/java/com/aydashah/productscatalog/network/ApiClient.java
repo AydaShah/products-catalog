@@ -1,9 +1,6 @@
 package com.aydashah.productscatalog.network;
 
-import com.aydashah.productscatalog.model.response.ErrorResponse;
 import com.aydashah.productscatalog.network.api.ApiCallback;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import java.util.concurrent.TimeUnit;
 
@@ -58,10 +55,7 @@ public class ApiClient {
                     return;
                 }
 
-                Gson gson = new GsonBuilder().create();
-                ErrorResponse errorResponse=gson.fromJson(response.body().toString(), ErrorResponse.class);
-
-                callback.onResponse(call, response, errorResponse);
+                callback.onResponse(call, response, null);
             }
 
             @Override
