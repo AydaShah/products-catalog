@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/products_item_outer_margin"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    card_view:cardCornerRadius="@dimen/cardview_default_radius"
+    card_view:cardElevation="@dimen/cardview_default_elevation"
+    card_view:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:id="@+id/itemHolderRelativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/products_item_inner_top_bottom_padding"
+        android:paddingLeft="@dimen/products_item_inner_left_right_padding"
+        android:paddingRight="@dimen/products_item_inner_left_right_padding"
+        android:paddingTop="@dimen/products_item_inner_top_bottom_padding">
+
+        <ImageView
+            android:id="@+id/productImageView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:adjustViewBounds="true" />
+
+        <TextView
+            android:id="@+id/productBrandTextView"
+            style="@style/ProductListItemNameTextStyle"
+            android:layout_below="@id/productImageView" />
+
+        <TextView
+            android:id="@+id/productNameTextView"
+            style="@style/ProductListItemPropertyTextStyle"
+            android:layout_below="@id/productBrandTextView" />
+
+        <TextView
+            android:id="@+id/productPriceTextView"
+            style="@style/ProductListItemPropertyTextStyle"
+            android:layout_below="@id/productNameTextView" />
+    </RelativeLayout>
+</android.support.v7.widget.CardView>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="error_message_size">16dp</dimen>
+    <dimen name="retry_btn_text_size">16dp</dimen>
+    <dimen name="retry_btn_padding">20dp</dimen>
+
+    //products list
+    <dimen name="products_item_inner_left_right_padding">15dp</dimen>
+    <dimen name="products_item_inner_top_bottom_padding">10dp</dimen>
+    <dimen name="products_list_properties_text_size">16dp</dimen>
+    <dimen name="products_list_name_text_size">15dp</dimen>
+    <dimen name="products_item_properties_margin">10dp</dimen>
+    <dimen name="products_item_image_height">80dp</dimen>
+    <dimen name="products_item_outer_margin">2dp</dimen>
+    <dimen name="products_item_radius">3dp</dimen>
+</resources>

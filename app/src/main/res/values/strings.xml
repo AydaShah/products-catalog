@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">products-catalog</string>
+    <string name="app_name">کاتالوگ</string>
+
+    //network
+    <string name="error_in_connection">در برقراری ارتباط با سرور مشکلی به وجود آمده است. لطفا دوباره تلاش کنید</string>
+
+    //products list
+    <string name="rial">ریال</string>
+    <string name="no_data_available">نتیجه‌‌ای یافت نشد.</string>
+    <string name="network_problem">مشکل در برقراری ارتباط</string>
+    <string name="retry">تلاش مجدد</string>
+    <string name="unsuccessful_operation">عملیات ناموفق</string>
 </resources>
