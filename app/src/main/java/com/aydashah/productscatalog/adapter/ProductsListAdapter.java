@@ -10,7 +10,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.aydashah.productscatalog.R;
+import com.aydashah.productscatalog.app.ProductsCatalogApp;
 import com.aydashah.productscatalog.listener.AdapterListener;
+import com.aydashah.productscatalog.model.ErrorMessages;
+import com.aydashah.productscatalog.model.ErrorModel;
 import com.aydashah.productscatalog.model.ProductModel;
 import com.aydashah.productscatalog.model.response.ErrorResponse;
 import com.aydashah.productscatalog.model.response.ProductsListResponse;
@@ -31,7 +34,7 @@ import retrofit2.Response;
 
 public class ProductsListAdapter extends RecyclerView.Adapter implements ApiCallback<ProductsListResponse> {
 
-    private int mMaxItemPerPage = 36;
+    private int mMaxItemPerPage = 35;
     private int mPagination;
     private String mCategory;
     private AdapterListener mAdapterListener;
@@ -117,27 +120,41 @@ public class ProductsListAdapter extends RecyclerView.Adapter implements ApiCall
         mIsLoading = false;
         int currentItemCount = getItemCount();
         if (response.isSuccessful()) {
-            ArrayList<ProductModel> items = response.body().getMetadata().getResults();
-            mData.addAll(items);
-            mPagination++;
+            if (response.body().isSuccess()) {
+                ArrayList<ProductModel> items = response.body().getMetadata().getResults();
+                mData.addAll(items);
+                mPagination++;
 
-            if (mData.size() == response.body().getMetadata().getTotalProducts()) {
-                mWholeListLoaded = true;
-            }
-            if (mData.isEmpty()) {
-                mAdapterListener.onEmptyResponse(response);
+                if (mData.size() == response.body().getMetadata().getTotalProducts()) {
+                    mWholeListLoaded = true;
+                }
+                if (mData.isEmpty()) {
+                    mAdapterListener.onEmptyResponse(response);
+                } else {
+                    notifyItemRangeInserted(currentItemCount, items.size());
+                    mAdapterListener.onNoneEmptyResponse(response);
+                }
+
             } else {
-                notifyItemRangeInserted(currentItemCount, items.size());
-                mAdapterListener.onNoneEmptyResponse(response);
+                String errorBody = "";
+                ArrayList<ErrorModel> errorList = ((ErrorMessages)(response.body().getMessages())).getError();
+                for (int i = 0; i < errorList.size(); i++) {
+                    errorBody += errorList.get(i).getMessage() + "\n";
+                }
+
+                mAdapterListener.onError(call, new Exception(errorBody));
             }
+
         } else {
-            mAdapterListener.onError(call, new Exception());
+            mAdapterListener.onError(call, new Exception(
+                    ProductsCatalogApp.getInstance().getApplicationContext().getString(
+                            R.string.unsuccessful_operation)));
         }
     }
 
     @Override
     public void onFailure(Call<ProductsListResponse> call, Throwable t) {
-
+        mAdapterListener.onError(call, t);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

@@ -28,6 +28,7 @@ public class ProductListFragment extends BaseFragment implements AdapterListener
     private RecyclerView mProductsRecyclerView;
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private TextView mEmptyView;
+    private TextView mErrorMessageTextView;
     private LinearLayout mNetworkProblemView;
     private ProductsListAdapter mAdapter;
     private final String PRODUCT_CATEGORY = "men_shirts";
@@ -107,6 +108,7 @@ public class ProductListFragment extends BaseFragment implements AdapterListener
             Log.d(TAG, "onError: request was cancelled");
         } else {
             Log.d(TAG, "onError: " + throwable.getMessage());
+            mErrorMessageTextView.setText(throwable.getMessage());
             mSwipeRefreshLayout.setRefreshing(false);
             mProductsRecyclerView.setVisibility(View.GONE);
             mNetworkProblemView.setVisibility(View.VISIBLE);
@@ -119,6 +121,7 @@ public class ProductListFragment extends BaseFragment implements AdapterListener
         mSwipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout);
         mNetworkProblemView = view.findViewById(R.id.networkProblemView);
         mEmptyView = view.findViewById(R.id.emptyView);
+        mErrorMessageTextView = view.findViewById(R.id.errorMessageTextView);
 
         mProductsRecyclerView.setHasFixedSize(true);
         RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);

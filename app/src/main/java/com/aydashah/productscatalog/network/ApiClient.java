@@ -1,6 +1,9 @@
 package com.aydashah.productscatalog.network;
 
+import com.aydashah.productscatalog.model.response.BaseResponse;
 import com.aydashah.productscatalog.network.api.ApiCallback;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.util.concurrent.TimeUnit;
 
@@ -40,10 +43,15 @@ public class ApiClient {
         OkHttpClient.Builder okHttpBuilder = new OkHttpClient.Builder()
                 .readTimeout(60, TimeUnit.SECONDS)
                 .connectTimeout(60, TimeUnit.SECONDS);
+
+        final Gson gson = new GsonBuilder()
+                .registerTypeAdapter(BaseResponse.class, new BaseResponse.MessagesDeserializer())
+                .create();
+
         mRetrofit = new Retrofit.Builder()
                 .baseUrl(NetworkManager.BASE_URL)
                 .client(okHttpBuilder.build())
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
     }
 

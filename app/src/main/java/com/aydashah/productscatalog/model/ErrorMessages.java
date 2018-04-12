@@ -8,34 +8,14 @@ import java.util.ArrayList;
 
 public class ErrorMessages {
 
-    private ArrayList<Error> error;
+    private ArrayList<ErrorModel> error;
 
-    public ArrayList<Error> getError() {
+    public ArrayList<ErrorModel> getError() {
         return error;
     }
 
-    public void setError(ArrayList<Error> error) {
+    public void setError(ArrayList<ErrorModel> error) {
         this.error = error;
     }
 
-    class Error {
-        private String reason;
-        private String message;
-
-        public String getReason() {
-            return reason;
-        }
-
-        public void setReason(String reason) {
-            this.reason = reason;
-        }
-
-        public String getMessage() {
-            return message;
-        }
-
-        public void setMessage(String message) {
-            this.message = message;
-        }
-    }
 }

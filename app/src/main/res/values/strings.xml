@@ -9,4 +9,5 @@
     <string name="no_data_available">نتیجه‌‌ای یافت نشد.</string>
     <string name="network_problem">مشکل در برقراری ارتباط</string>
     <string name="retry">تلاش مجدد</string>
+    <string name="unsuccessful_operation">عملیات ناموفق</string>
 </resources>
