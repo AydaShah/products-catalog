@@ -82,7 +82,6 @@ public class ProductListFragment extends BaseFragment implements AdapterListener
     @Override
     public void onStartLoadingList() {
         mSwipeRefreshLayout.setRefreshing(true);
-        mProductsRecyclerView.setVisibility(View.GONE);
         mNetworkProblemView.setVisibility(View.GONE);
         mEmptyView.setVisibility(View.GONE);
     }
