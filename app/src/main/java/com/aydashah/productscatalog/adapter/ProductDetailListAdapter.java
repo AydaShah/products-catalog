@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -24,9 +23,9 @@ import com.aydashah.productscatalog.network.ApiClient;
 import com.aydashah.productscatalog.network.api.ApiCallback;
 import com.aydashah.productscatalog.network.api.ProductsApi;
 import com.aydashah.productscatalog.utils.PersianNumberConverter;
-import com.squareup.picasso.Picasso;
-import com.synnapps.carouselview.CarouselView;
-import com.synnapps.carouselview.ImageListener;
+import com.daimajia.slider.library.SliderLayout;
+import com.daimajia.slider.library.SliderTypes.BaseSliderView;
+import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
 
 import java.util.ArrayList;
 
@@ -107,20 +106,17 @@ public class ProductDetailListAdapter extends RecyclerView.Adapter implements Ap
                         PersianNumberConverter.separateBy3(item.getPrice()))
                         + " " + context.getString(R.string.rial));
 
-                viewHolder.productImagesCarouselView.setImageListener(new ImageListener() {
-                    @Override
-                    public void setImageForPosition(int position, ImageView imageView) {
-                        Picasso.with(context)
-                                .load(item.getImageList().get(position).getUrl())
-                                .placeholder(R.drawable.ic_product)
-                                .fit().centerInside()
-                                .into(imageView);
-                    }
-                });
-                viewHolder.productImagesCarouselView.setPageCount(item.getImageList().size());
                 if (item.getRatingReviewsSummary() != null) {
                     viewHolder.productRateBar.setRating(item.getRatingReviewsSummary().getAverage());
                 }
+
+                for(int i=0;i<item.getImageList().size();i++){
+                    DefaultSliderView defaultSliderView=new DefaultSliderView(context);
+                    defaultSliderView.image(item.getImageList().get(i).getUrl());
+                    defaultSliderView.setScaleType(BaseSliderView.ScaleType.CenterInside);
+                    viewHolder.productImagesSlider.addSlider(defaultSliderView);
+                }
+                viewHolder.productImagesSlider.stopAutoCycle();
 
                 break;
 
@@ -195,7 +191,7 @@ public class ProductDetailListAdapter extends RecyclerView.Adapter implements Ap
         final TextView productBrandTextView;
         final TextView productNameTextView;
         final TextView productPriceTextView;
-        final CarouselView productImagesCarouselView;
+        final SliderLayout productImagesSlider;
         final RatingBar productRateBar;
 
         final TextView keyTextView;
@@ -209,8 +205,8 @@ public class ProductDetailListAdapter extends RecyclerView.Adapter implements Ap
             productBrandTextView = itemView.findViewById(R.id.productBrandTextView);
             productNameTextView = itemView.findViewById(R.id.productNameTextView);
             productPriceTextView = itemView.findViewById(R.id.productPriceTextView);
-            productImagesCarouselView = itemView.findViewById(R.id.productImagesCarouselView);
             productRateBar = itemView.findViewById(R.id.productRateBar);
+            productImagesSlider = itemView.findViewById(R.id.productImagesSlider);
 
             keyTextView = itemView.findViewById(R.id.keyTextView);
             valueTextView = itemView.findViewById(R.id.valueTextView);

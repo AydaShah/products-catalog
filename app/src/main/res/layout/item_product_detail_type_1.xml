@@ -14,17 +14,11 @@
         style="@style/ProductListItemNameTextStyle"
         android:textSize="@dimen/product_detail_brand_text_size" />
 
-    <com.synnapps.carouselview.CarouselView
-        android:id="@+id/productImagesCarouselView"
+    <com.daimajia.slider.library.SliderLayout
+        android:id="@+id/productImagesSlider"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="@dimen/product_detail_fields_space"
-        app:fillColor="#FFFFFFFF"
-        app:pageColor="#00000000"
-        app:radius="6dp"
-        app:slideInterval="3000"
-        app:strokeColor="#FF777777"
-        app:strokeWidth="1dp" />
+        android:layout_height="300dp"
+        />
 
     <TextView
         android:id="@+id/productNameTextView"

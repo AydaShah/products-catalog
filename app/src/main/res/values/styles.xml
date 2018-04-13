@@ -54,7 +54,6 @@
         <item name="android:textColor">@color/dim_gray</item>
         <item name="android:textSize">@dimen/products_list_name_text_size</item>
     </style>
-
     <style name="CustomRatingBar" parent="android:Widget.Holo.RatingBar.Small">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
