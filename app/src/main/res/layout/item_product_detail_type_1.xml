@@ -38,9 +38,10 @@
         android:layout_marginTop="@dimen/product_detail_fields_space"
         android:textSize="@dimen/product_detail_price_text_size" />
 
-    <RatingBar
+    <android.support.v7.widget.AppCompatRatingBar
         android:id="@+id/productRateBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right|center" />
+        style="@style/CustomRatingBar"
+        android:clickable="false"
+        android:progressBackgroundTint="@color/dim_gray"
+        android:progressTint="@color/gold" />
 </LinearLayout>

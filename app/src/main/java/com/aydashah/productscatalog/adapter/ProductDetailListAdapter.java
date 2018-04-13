@@ -118,6 +118,9 @@ public class ProductDetailListAdapter extends RecyclerView.Adapter implements Ap
                     }
                 });
                 viewHolder.productImagesCarouselView.setPageCount(item.getImageList().size());
+                if (item.getRatingReviewsSummary() != null) {
+                    viewHolder.productRateBar.setRating(item.getRatingReviewsSummary().getAverage());
+                }
 
                 break;
 
