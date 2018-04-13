@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -23,6 +24,7 @@ import com.aydashah.productscatalog.network.ApiClient;
 import com.aydashah.productscatalog.network.api.ApiCallback;
 import com.aydashah.productscatalog.network.api.ProductsApi;
 import com.aydashah.productscatalog.utils.PersianNumberConverter;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -89,7 +91,7 @@ public class ProductsListAdapter extends RecyclerView.Adapter implements ApiCall
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         final ProductModel item = mData.get(position);
-        ViewHolder viewHolder = (ViewHolder) holder;
+        final ViewHolder viewHolder = (ViewHolder) holder;
         final Context context = viewHolder.itemHolderRelativeLayout.getContext();
 
         if (item.getBrand() != null) {
@@ -106,7 +108,18 @@ public class ProductsListAdapter extends RecyclerView.Adapter implements ApiCall
                     .load(item.getImage())
                     .placeholder(R.drawable.ic_product)
                     .fit().centerInside()
-                    .into(viewHolder.productImageView);
+                    .into(viewHolder.productImageView, new ImageLoadedCallback(viewHolder.productImageProgressBar) {
+                        @Override
+                        public void onSuccess() {
+                                this.progressBar.setVisibility(View.GONE);
+                        }
+
+                        @Override
+                        public void onError() {
+                                this.progressBar.setVisibility(View.GONE);
+                                viewHolder.productImageView.setImageResource(R.drawable.ic_product);
+                        }
+                    });
         } catch (Exception e) {
             viewHolder.productImageView.setImageResource(R.drawable.ic_product);
         }
@@ -168,6 +181,7 @@ public class ProductsListAdapter extends RecyclerView.Adapter implements ApiCall
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         final ImageView productImageView;
+        final ProgressBar productImageProgressBar;
         final TextView productBrandTextView;
         final TextView productNameTextView;
         final TextView productPriceTextView;
@@ -175,12 +189,30 @@ public class ProductsListAdapter extends RecyclerView.Adapter implements ApiCall
 
         public ViewHolder(View itemView) {
             super(itemView);
-            productBrandTextView = (TextView) itemView.findViewById(R.id.productBrandTextView);
-            productNameTextView = (TextView) itemView.findViewById(R.id.productNameTextView);
-            productPriceTextView = (TextView) itemView.findViewById(R.id.productPriceTextView);
-            productImageView = (ImageView) itemView.findViewById(R.id.productImageView);
-            itemHolderRelativeLayout = (RelativeLayout) itemView.findViewById(R.id.itemHolderRelativeLayout);
+            productBrandTextView = itemView.findViewById(R.id.productBrandTextView);
+            productNameTextView = itemView.findViewById(R.id.productNameTextView);
+            productPriceTextView = itemView.findViewById(R.id.productPriceTextView);
+            productImageView = itemView.findViewById(R.id.productImageView);
+            productImageProgressBar = itemView.findViewById(R.id.productImageProgressBar);
+            itemHolderRelativeLayout = itemView.findViewById(R.id.itemHolderRelativeLayout);
         }
 
+    }
+
+    private class ImageLoadedCallback implements Callback {
+        ProgressBar progressBar;
+
+        public  ImageLoadedCallback(ProgressBar progBar){
+            progressBar = progBar;
+        }
+
+        @Override
+        public void onSuccess() {
+        }
+
+        @Override
+        public void onError() {
+
+        }
     }
 }
