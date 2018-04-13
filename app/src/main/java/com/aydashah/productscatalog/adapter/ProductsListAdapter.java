@@ -2,6 +2,7 @@ package com.aydashah.productscatalog.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,6 +56,7 @@ public class ProductsListAdapter extends RecyclerView.Adapter implements ApiCall
     }
 
     public void load() {
+        Log.d("testAyda", "load: "+mPagination+"  "+mData.size());
         mIsLoading = true;
         ProductsApi api = ApiClient.getInstance().getEndpointApi(ProductsApi.class);
         call = api.getProductsListFromServer(mCategory, mPagination, mMaxItemPerPage);
@@ -76,6 +78,8 @@ public class ProductsListAdapter extends RecyclerView.Adapter implements ApiCall
 
     public void reload() {
         mData.clear();
+        mIsLoading = true;
+        mPagination = 0;
         notifyDataSetChanged();
         load();
     }
@@ -111,13 +115,13 @@ public class ProductsListAdapter extends RecyclerView.Adapter implements ApiCall
                     .into(viewHolder.productImageView, new ImageLoadedCallback(viewHolder.productImageProgressBar) {
                         @Override
                         public void onSuccess() {
-                                this.progressBar.setVisibility(View.GONE);
+                            this.progressBar.setVisibility(View.GONE);
                         }
 
                         @Override
                         public void onError() {
-                                this.progressBar.setVisibility(View.GONE);
-                                viewHolder.productImageView.setImageResource(R.drawable.ic_product);
+                            this.progressBar.setVisibility(View.GONE);
+                            viewHolder.productImageView.setImageResource(R.drawable.ic_product);
                         }
                     });
         } catch (Exception e) {
@@ -146,7 +150,7 @@ public class ProductsListAdapter extends RecyclerView.Adapter implements ApiCall
                 ArrayList<ProductModel> items = response.body().getMetadata().getResults();
                 mData.addAll(items);
                 mPagination++;
-
+                Log.d("testAyda", "onResponse: "+mData.size()+"  "+items.size()+"  "+response.body().getMetadata().getTotalProducts());
                 if (mData.size() >= response.body().getMetadata().getTotalProducts()) {
                     mWholeListLoaded = true;
                 }
@@ -202,7 +206,7 @@ public class ProductsListAdapter extends RecyclerView.Adapter implements ApiCall
     private class ImageLoadedCallback implements Callback {
         ProgressBar progressBar;
 
-        public  ImageLoadedCallback(ProgressBar progBar){
+        public ImageLoadedCallback(ProgressBar progBar) {
             progressBar = progBar;
         }
 
