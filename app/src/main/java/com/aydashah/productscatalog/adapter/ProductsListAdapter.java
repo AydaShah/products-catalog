@@ -100,7 +100,7 @@ public class ProductsListAdapter extends RecyclerView.Adapter implements ApiCall
         }
         viewHolder.productPriceTextView.setText(PersianNumberConverter.convertToPersianFromString(
                 PersianNumberConverter.separateBy3(item.getPrice()))
-                +" "+ context.getString(R.string.rial));
+                + " " + context.getString(R.string.rial));
         try {
             Picasso.with(context)
                     .load(item.getImage())
@@ -114,7 +114,7 @@ public class ProductsListAdapter extends RecyclerView.Adapter implements ApiCall
         viewHolder.itemHolderRelativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity)context).startActivity(CatalogIntent.createProductsDetailIntent(item.getSku()));
+                ((MainActivity) context).startActivity(CatalogIntent.createProductsDetailIntent(item.getSku()));
             }
         });
     }
@@ -134,7 +134,7 @@ public class ProductsListAdapter extends RecyclerView.Adapter implements ApiCall
                 mData.addAll(items);
                 mPagination++;
 
-                if (mData.size() == response.body().getMetadata().getTotalProducts()) {
+                if (mData.size() >= response.body().getMetadata().getTotalProducts()) {
                     mWholeListLoaded = true;
                 }
                 if (mData.isEmpty()) {
@@ -143,7 +143,6 @@ public class ProductsListAdapter extends RecyclerView.Adapter implements ApiCall
                     notifyItemRangeInserted(currentItemCount, items.size());
                     mAdapterListener.onNoneEmptyResponse(response);
                 }
-
             } else {
                 String errorBody = "";
                 ArrayList<ErrorModel> errorList = ((ErrorMessages) (response.body().getMessages())).getError();
