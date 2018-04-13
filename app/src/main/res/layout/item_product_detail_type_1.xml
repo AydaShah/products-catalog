@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/itemHolderLinearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/product_detail_outer_margin"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:padding="@dimen/product_detail_inner_padding">
+
+    <TextView
+        android:id="@+id/productBrandTextView"
+        style="@style/ProductListItemNameTextStyle"
+        android:textSize="@dimen/product_detail_brand_text_size" />
+
+    <com.daimajia.slider.library.SliderLayout
+        android:id="@+id/productImagesSlider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/product_detail_image_slider_height" />
+
+    <TextView
+        android:id="@+id/productNameTextView"
+        style="@style/ProductListItemPropertyTextStyle"
+        android:layout_marginTop="@dimen/product_detail_fields_space"
+        android:textSize="@dimen/product_detail_name_text_size" />
+
+    <TextView
+        android:id="@+id/productPriceTextView"
+        style="@style/ProductListItemPropertyTextStyle"
+        android:layout_marginTop="@dimen/product_detail_fields_space"
+        android:textSize="@dimen/product_detail_price_text_size" />
+
+    <android.support.v7.widget.AppCompatRatingBar
+        android:id="@+id/productRateBar"
+        style="@style/CustomRatingBar"
+        android:clickable="false"
+        android:progressBackgroundTint="@color/dim_gray"
+        android:progressTint="@color/gold" />
+</LinearLayout>

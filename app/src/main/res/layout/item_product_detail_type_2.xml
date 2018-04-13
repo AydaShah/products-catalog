@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/itemHolderLinearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/product_detail_outer_margin"
+    android:layout_marginRight="@dimen/product_detail_outer_margin"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/product_detail_inner_padding"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/valueTextView"
+            style="@style/ProductDetailSpecificationTextStyle"
+            android:textColor="@color/dim_gray" />
+
+        <TextView
+            android:id="@+id/keyTextView"
+            style="@style/ProductDetailSpecificationTextStyle"
+            android:textColor="@android:color/black" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/dim_gray" />
+</LinearLayout>

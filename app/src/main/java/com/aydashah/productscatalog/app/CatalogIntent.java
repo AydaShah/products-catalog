@@ -9,8 +9,13 @@ import android.net.Uri;
 
 public class CatalogIntent {
 
-    public static Intent createProductsList() {
+    public static Intent createProductsListIntent() {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("catalog://products_list"));
+        return intent;
+    }
+
+    public static Intent createProductsDetailIntent(String sku) {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("catalog://products_detail?sku=" + sku));
         return intent;
     }
 }

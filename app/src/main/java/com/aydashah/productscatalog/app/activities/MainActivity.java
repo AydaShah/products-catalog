@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
 import com.aydashah.productscatalog.R;
+import com.aydashah.productscatalog.app.fragments.ProductDetailFragment;
 import com.aydashah.productscatalog.app.fragments.ProductListFragment;
 
 /**
@@ -42,6 +43,13 @@ public class MainActivity extends FragmentActivity {
                         fragment = new ProductListFragment();
                         openFragment(fragment);
                         break;
+                    case "products_detail":
+                        Bundle productDetailBundle = new Bundle();
+                        productDetailBundle.putString("SKU", intentData.getQueryParameter("sku"));
+                        fragment = new ProductDetailFragment();
+                        fragment.setArguments(productDetailBundle);
+                        openFragment(fragment);
+                        break;
                 }
             }
         }
@@ -55,4 +63,14 @@ public class MainActivity extends FragmentActivity {
         fragmentTransaction.commitAllowingStateLoss();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragmentHolder);
+
+        if (fragment != null) {
+            fragment.onActivityResult(requestCode, resultCode, data);
+        }
+    }
 }

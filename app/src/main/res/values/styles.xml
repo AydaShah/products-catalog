@@ -6,10 +6,17 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:typeface">serif</item>
+        <item name="android:textViewStyle">@style/MyTextStyle</item>
+    </style>
+
+    <style name="MyTextStyle" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:fontFamily">@null</item>
     </style>
 
     <style name="ErrorMessageTextStyle" parent="android:Widget.TextView">
         <item name="android:layout_width">match_parent</item>
+        <item name="android:textAppearance">@style/MyTextStyle</item>
         <item name="android:gravity">center|center</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_centerInParent">true</item>
@@ -20,17 +27,19 @@
     <style name="RetryButtonStyle" parent="android:Widget.Button">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:gravity">center|center</item>
+        <item name="android:textAppearance">@style/MyTextStyle</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">@dimen/retry_btn_text_size</item>
-        <item name="android:background">@color/dark_orange</item>
+        <item name="android:background">@color/colorAccent</item>
         <item name="android:layout_marginTop">@dimen/retry_btn_padding</item>
         <item name="android:padding">@dimen/retry_btn_padding</item>
     </style>
 
     <style name="ProductListItemPropertyTextStyle" parent="android:Widget.TextView">
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:gravity">right|center</item>
+        <item name="android:textAppearance">@style/MyTextStyle</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_alignParentRight">true</item>
         <item name="android:layout_marginTop">@dimen/products_item_properties_margin</item>
@@ -40,9 +49,26 @@
         <item name="android:ellipsize">end</item>
     </style>
 
+    <style name="ProductDetailSpecificationTextStyle" parent="android:Widget.TextView">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:textAppearance">@style/MyTextStyle</item>
+        <item name="android:gravity">right</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_marginTop">@dimen/product_detail_specification_margin</item>
+        <item name="android:textSize">@dimen/product_detail_specification_text_size</item>
+    </style>
+
     <style name="ProductListItemNameTextStyle" parent="ProductListItemPropertyTextStyle">
         <item name="android:textColor">@color/dim_gray</item>
         <item name="android:textSize">@dimen/products_list_name_text_size</item>
+    </style>
+    <style name="CustomRatingBar" parent="android:Widget.Holo.RatingBar.Small">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">right|center</item>
+        <item name="android:layoutDirection">rtl</item>
     </style>
 
 </resources>

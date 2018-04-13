@@ -9,34 +9,13 @@
         android:layout_height="match_parent">
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/productsRecyclerView"
+            android:id="@+id/defaultRecyclerView"
             android:layout_width="match_parent"
-            android:background="@color/gainsboro"
             android:layout_height="wrap_content"
+            android:layoutDirection="rtl"
+            android:background="@color/gainsboro"
             android:scrollbars="vertical"></android.support.v7.widget.RecyclerView>
     </android.support.v4.widget.SwipeRefreshLayout>
 
-    <TextView
-        android:id="@+id/emptyView"
-        style="@style/ErrorMessageTextStyle"
-        android:visibility="gone" />
-
-    <LinearLayout
-        android:id="@+id/networkProblemView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:visibility="gone">
-
-        <TextView
-            style="@style/ErrorMessageTextStyle"
-            android:id="@+id/errorMessageTextView"
-            android:text="@string/network_problem" />
-
-        <Button
-            android:id="@+id/retryButton"
-            style="@style/RetryButtonStyle"
-            android:text="@string/retry" />
-    </LinearLayout>
+    <include layout="@layout/view_display_error" />
 </RelativeLayout>

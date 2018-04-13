@@ -9,32 +9,32 @@ import com.google.gson.annotations.SerializedName;
 public class RatingReviewsSummaryModel {
 
     @SerializedName("ratings_total")
-    private String ratingsTotal;
+    private int ratingsTotal;
     @SerializedName("reviews_total")
-    private String reviewsTotal;
-    private String average;
+    private int reviewsTotal;
+    private float average;
 
-    public String getRatingsTotal() {
+    public int getRatingsTotal() {
         return ratingsTotal;
     }
 
-    public void setRatingsTotal(String ratingsTotal) {
+    public void setRatingsTotal(int ratingsTotal) {
         this.ratingsTotal = ratingsTotal;
     }
 
-    public String getReviewsTotal() {
+    public int getReviewsTotal() {
         return reviewsTotal;
     }
 
-    public void setReviewsTotal(String reviewsTotal) {
+    public void setReviewsTotal(int reviewsTotal) {
         this.reviewsTotal = reviewsTotal;
     }
 
-    public String getAverage() {
+    public float getAverage() {
         return average;
     }
 
-    public void setAverage(String average) {
+    public void setAverage(float average) {
         this.average = average;
     }
 }

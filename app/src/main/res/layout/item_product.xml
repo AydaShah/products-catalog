@@ -19,17 +19,32 @@
         android:paddingRight="@dimen/products_item_inner_left_right_padding"
         android:paddingTop="@dimen/products_item_inner_top_bottom_padding">
 
-        <ImageView
-            android:id="@+id/productImageView"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:adjustViewBounds="true" />
+            android:id="@+id/imageContainer">
+
+            <ProgressBar
+                android:id="@+id/productImageProgressBar"
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center" />
+
+            <ImageView
+                android:id="@+id/productImageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:adjustViewBounds="true" />
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/productBrandTextView"
             style="@style/ProductListItemNameTextStyle"
-            android:layout_below="@id/productImageView" />
+            android:layout_below="@id/imageContainer" />
 
         <TextView
             android:id="@+id/productNameTextView"
